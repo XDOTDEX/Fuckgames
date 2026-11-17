@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>Bed Bounce Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game"></canvas>
+
+  <div id="hud">
+    <div id="score">0</div>
+    <div id="best">BEST 0</div>
+  </div>
+
+  <div class="corner left">
+    <button class="cbtn" id="photoBtn" title="Use your photo as the face" aria-label="Upload photo">📷</button>
+    <input type="file" id="fileInput" accept="image/*" />
+  </div>
+  <div class="corner right">
+    <button class="cbtn" id="soundBtn" title="Sound on/off" aria-label="Toggle sound">🔊</button>
+    <button class="cbtn" id="pauseBtn" title="Pause" aria-label="Pause">⏸</button>
+  </div>
+
+  <div id="hint">← drag the bed to catch →</div>
+
+  <!-- START -->
+  <div class="overlay" id="startScreen">
+    <img class="facePreview" id="facePreviewStart" alt="" />
+    <h1>🛏️ Bed Bounce</h1>
+    <div class="emojiRow">😴 💤 😲</div>
+    <p>Stick figures are falling from the sky!<br>
+    <b>Drag the bed</b> left &amp; right to catch them.<br>
+    Every catch = a bounce + 1 point. Miss one and it's <b>SPLAT!</b></p>
+    <button class="bigbtn" id="startBtn">▶ &nbsp;Start Game</button>
+    <button class="ghostbtn" id="photoBtn2">📷 Use my photo as face</button>
+  </div>
+
+  <!-- PAUSE -->
+  <div class="overlay hidden" id="pauseScreen">
+    <h1>⏸ Paused</h1>
+    <p>Take a breath. The fallers can wait.</p>
+    <button class="bigbtn" id="resumeBtn">▶ &nbsp;Resume</button>
+    <button class="ghostbtn" id="restartBtn2">↻ Restart</button>
+  </div>
+
+  <!-- GAME OVER -->
+  <div class="overlay hidden" id="overScreen">
+    <h1>💥 Splat!</h1>
+    <div id="finalScore">0</div>
+    <div id="finalBest">BEST 0</div>
+    <p id="overMsg">He missed the bed…</p>
+    <button class="bigbtn" id="againBtn">↻ &nbsp;Play Again</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
