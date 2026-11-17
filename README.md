@@ -1,5 +1,15 @@
 # 🛏️ Bed Bounce — *Khela ya nhi yeh* 😂🤣
 
+## 👤 Author
+
+**DExTER** — follow / say hi:
+
+- 📸 Instagram: [@callmedexter4.0](https://www.instagram.com/callmedexter4.0)
+- ✈️ Telegram: [@xdotdexter](https://t.me/xdotdexter)
+- 🐙 GitHub: [@XDOTDEX](https://github.com/XDOTDEX)
+
+---
+
 A tiny, silly **HTML5 canvas game** inspired by the viral bed-bounce video.
 Stick figures with **real photo faces** fall from the sky — you drag the bed,
 catch them, and watch them bounce off with the **actual sounds from the video**.
@@ -9,7 +19,9 @@ catch them, and watch them bounce off with the **actual sounds from the video**.
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![No Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
 
----
+## 🎮 Play Online
+
+▶️ **https://xdotdex.github.io/Fuckgames/** — no install, just open and play!
 
 ## 🎮 How to Play
 
@@ -28,7 +40,7 @@ catch them, and watch them bounce off with the **actual sounds from the video**.
 - ⏸️ Pause button & 🔊 sound on/off toggle
 - 📱 Fully responsive — plays on phone and desktop, no install, no build step
 
-## 🚀 Run It
+## 🚀 Run It Locally
 
 Just open **`index.html`** in any browser. That's it.
 
@@ -52,14 +64,6 @@ python3 -m http.server
 
 Pure **HTML5 Canvas + CSS3 + vanilla JavaScript**. Zero libraries, zero frameworks.
 Sound effects are embedded clips from the original video (with synthesized WebAudio fallbacks).
-
-## 👤 Author
-
-**DExTER** — follow / say hi:
-
-- 📸 Instagram: [@callmedexter4.0](https://www.instagram.com/callmedexter4.0)
-- ✈️ Telegram: [@xdotdexter](https://t.me/xdotdexter)
-- 🐙 GitHub: [@XDOTDEX](https://github.com/XDOTDEX)
 
 ---
 
