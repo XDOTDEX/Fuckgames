@@ -200,6 +200,7 @@ function roundRect(x,y,w,h,r){
 /* ============ FALLER (stick figure) ============ */
 var faller=null;
 var particles=[];
+var floaters=[];
 var splatMark=null;
 function spawnFaller(){
   var margin=50;
@@ -253,7 +254,7 @@ function setScore(v){
 function startGame(){
   audio();
   setScore(0); bestEl.textContent='BEST '+best;
-  particles=[]; splatMark=null; shake=0; flashRed=0;
+  particles=[]; floaters=[]; splatMark=null; shake=0; flashRed=0;
   bed.x=W/2; bed.targetX=W/2; bed.squash=0;
   spawnFaller();
   state='playing';
@@ -282,7 +283,11 @@ function bounceOff(){
   f.vr=(Math.random()-0.5)*0.25;
   bed.squash=1;
   sndBoing(Math.abs(f.vy));
-  setScore(score+1);
+  var bedLeft = bed.x - bed.w/2;
+  var headHit = (f.x - bedLeft) >= 2 && (f.x - bedLeft) <= 70;
+  var pts = headHit ? 2 : 1;
+  setScore(score + pts);
+  floaters.push({x:f.x, y:bed.topY-34, text:'+'+pts+(headHit?' HEAD!':''), life:1, gold:headHit});
   /* little star burst */
   for(var i=0;i<10;i++){
     particles.push({x:f.x,y:bed.topY-4,vx:(Math.random()-0.5)*4,vy:-Math.random()*3.4-0.6,life:1,s:Math.random()*3+2});
@@ -390,6 +395,20 @@ function loop(ts){
     ctx.save(); ctx.globalAlpha=Math.max(p.life,0);
     ctx.fillStyle=p.c||'#e8a812';
     ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  /* floating score text */
+  for(var fi=floaters.length-1;fi>=0;fi--){
+    var ft=floaters[fi];
+    ft.y-=0.9*dt; ft.life-=0.022*dt;
+    if(ft.life<=0){ floaters.splice(fi,1); continue; }
+    ctx.save(); ctx.globalAlpha=Math.max(ft.life,0);
+    ctx.font='800 21px system-ui, sans-serif'; ctx.textAlign='center';
+    ctx.lineWidth=4; ctx.strokeStyle='rgba(255,255,255,.85)';
+    ctx.strokeText(ft.text, ft.x, ft.y);
+    ctx.fillStyle=ft.gold ? '#d99400' : '#444';
+    ctx.fillText(ft.text, ft.x, ft.y);
     ctx.restore();
   }
 
@@ -563,6 +582,7 @@ function openBoard(){ fetchBoard(); document.getElementById('boardScreen').class
 function closeBoard(){ document.getElementById('boardScreen').classList.add('hidden'); }
 document.getElementById('boardBtn').addEventListener('click', openBoard);
 document.getElementById('boardBtn2').addEventListener('click', openBoard);
+document.getElementById('boardBtn3').addEventListener('click', openBoard);
 document.getElementById('boardCloseBtn').addEventListener('click', closeBoard);
 var plEl=document.getElementById('playerLine');
 if(plEl && tgUser) plEl.textContent='👤 Playing as '+playerName();
