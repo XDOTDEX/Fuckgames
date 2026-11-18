@@ -271,6 +271,7 @@ function gameOver(){
   var msgs=['He missed the bed…','So close! The floor is not soft.','The sleeper didn\'t even wake up. 😴','Gravity wins this round.','Ouch. Right on the floorboards.'];
   document.getElementById('overMsg').textContent = newBestFlag ? '🎉 New best score!' : msgs[Math.floor(Math.random()*msgs.length)];
   newBestFlag=false;
+  submitScore();
   setTimeout(function(){ overScreen.classList.remove('hidden'); },650);
 }
 function bounceOff(){
@@ -466,4 +467,104 @@ fileInput.addEventListener('change',function(){
 resize();
 bed.x=W/2; bed.targetX=W/2;
 requestAnimationFrame(loop);
+/* ============ LEADERBOARD (cloud) ============ */
+var BB_DB='https://bed-bounce-lb-default-rtdb.asia-southeast1.firebasedatabase.app';
+var tgApp=null, tgUser=null;
+try{
+  if(window.Telegram && window.Telegram.WebApp){
+    tgApp=window.Telegram.WebApp;
+    tgApp.ready();
+    if(tgApp.initDataUnsafe && tgApp.initDataUnsafe.user) tgUser=tgApp.initDataUnsafe.user;
+  }
+}catch(e){}
+function playerName(){
+  if(tgUser){
+    if(tgUser.first_name) return tgUser.first_name;
+    if(tgUser.username) return '@'+tgUser.username;
+    return 'Player';
+  }
+  var n='';
+  try{ n=localStorage.getItem('bb_name')||''; }catch(e){}
+  return n||'You';
+}
+function myKey(){
+  if(tgUser && tgUser.id) return 'tg_'+tgUser.id;
+  var k='';
+  try{
+    k=localStorage.getItem('bb_uid')||'';
+    if(!k){ k='u_'+Math.random().toString(36).slice(2,10)+Date.now().toString(36); localStorage.setItem('bb_uid',k); }
+  }catch(e){ k='u_guest'; }
+  return k;
+}
+var boardRows=[];
+var boardLoaded=false;
+function escHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function dbPath(p){ return BB_DB.replace(/\/+$/,'')+p; }
+function dbReady(){ return BB_DB && BB_DB.indexOf('__')!==0; }
+function fetchBoard(){
+  if(!dbReady()){ renderBoard(); return; }
+  fetch(dbPath('/scores.json')).then(function(r){ return r.json(); }).then(function(data){
+    var key=myKey();
+    boardRows=[];
+    if(data){
+      Object.keys(data).forEach(function(k){
+        var v=data[k]||{};
+        boardRows.push({key:k, name:v.name||'Player', score:v.score||0, mine:k===key});
+      });
+    }
+    boardRows.sort(function(a,b){ return b.score-a.score; });
+    boardLoaded=true;
+    renderBoard();
+  }).catch(function(){ renderBoard(); });
+}
+function submitScore(){
+  var rankEl=document.getElementById('finalRank');
+  if(score<=0){ if(rankEl) rankEl.textContent=''; return; }
+  if(!tgUser){
+    var has='';
+    try{ has=localStorage.getItem('bb_name')||''; }catch(e){}
+    if(!has){
+      var n=null;
+      try{ n=prompt('Your name for the leaderboard?','Player'); }catch(e){}
+      if(n){ try{ localStorage.setItem('bb_name', String(n).slice(0,20)); }catch(e){} }
+    }
+  }
+  var name=playerName(), key=myKey();
+  var me=null;
+  for(var i=0;i<boardRows.length;i++){ if(boardRows[i].key===key){ me=boardRows[i]; break; } }
+  if(!me){ me={key:key, name:name, score:0, mine:true}; boardRows.push(me); }
+  me.name=name;
+  if(score>me.score) me.score=score;
+  boardRows.sort(function(a,b){ return b.score-a.score; });
+  var rank=boardRows.indexOf(me)+1;
+  if(rankEl) rankEl.textContent='🏆 Leaderboard rank #'+rank;
+  renderBoard();
+  if(!dbReady()) return;
+  fetch(dbPath('/scores/'+key+'.json')).then(function(r){ return r.json(); }).then(function(cur){
+    var prev=(cur && cur.score) || 0;
+    if(score>prev){
+      return fetch(dbPath('/scores/'+key+'.json'), {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, score:score, ts:Date.now()})});
+    }
+  }).then(function(){ fetchBoard(); }).catch(function(){});
+}
+function renderBoard(){
+  var rows=boardRows.slice(0,10);
+  var html='';
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    var medal = i===0 ? '🥇' : (i===1 ? '🥈' : (i===2 ? '🥉' : '#'+(i+1)));
+    html+='<div class="brow'+(r.mine?' me':'')+'"><span class="brank">'+medal+'</span><span class="bname">'+escHtml(r.name)+'</span><span class="bscore">'+r.score+'</span></div>';
+  }
+  if(!rows.length) html='<p style="text-align:center">'+(boardLoaded ? 'No scores yet — be the first!' : 'Loading…')+'</p>';
+  document.getElementById('boardList').innerHTML=html;
+  document.getElementById('boardNote').textContent = tgUser ? ('Playing as '+playerName()) : 'Play via Telegram and your Telegram name appears automatically';
+}
+function openBoard(){ fetchBoard(); document.getElementById('boardScreen').classList.remove('hidden'); }
+function closeBoard(){ document.getElementById('boardScreen').classList.add('hidden'); }
+document.getElementById('boardBtn').addEventListener('click', openBoard);
+document.getElementById('boardBtn2').addEventListener('click', openBoard);
+document.getElementById('boardCloseBtn').addEventListener('click', closeBoard);
+var plEl=document.getElementById('playerLine');
+if(plEl && tgUser) plEl.textContent='👤 Playing as '+playerName();
+fetchBoard();
 })();

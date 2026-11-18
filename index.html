@@ -7,6 +7,7 @@
 <link rel="icon" href="data:," />
 <title>Bed Bounce Game</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -24,6 +25,7 @@
   <div class="corner right">
     <button class="cbtn" id="soundBtn" title="Sound on/off" aria-label="Toggle sound">🔊</button>
     <button class="cbtn" id="pauseBtn" title="Pause" aria-label="Pause">⏸</button>
+    <button class="cbtn" id="boardBtn" title="Leaderboard" aria-label="Leaderboard">🏆</button>
   </div>
 
   <div id="quoteText">🃏No awakening here. Only sleep that never ends, among dead stars 🎴</div>
@@ -40,7 +42,9 @@
     <p>Stick figures are falling from the sky!<br>
     <b>Drag the bed</b> left &amp; right to catch them.<br>
     Every catch = a bounce + 1 point. Miss one and it's <b>SPLAT!</b></p>
+    <div><span class="gwPill">🎁 Weekly Giveaway — $100 for the Top 3!</span></div>
     <button class="bigbtn" id="startBtn">▶ &nbsp;Start Game</button>
+    <p id="playerLine"></p>
     <button class="ghostbtn" id="photoBtn2">📷 Use my photo as face</button>
   </div>
 
@@ -58,10 +62,21 @@
     <div id="finalScore">0</div>
     <div id="finalBest">BEST 0</div>
     <p id="overMsg">He missed the bed…</p>
+    <div id="finalRank"></div>
     <button class="bigbtn" id="againBtn">↻ &nbsp;Play Again</button>
+    <button class="ghostbtn" id="boardBtn2">🏆 Leaderboard</button>
   </div>
 </div>
 
+
+  <!-- LEADERBOARD -->
+  <div class="overlay hidden" id="boardScreen">
+    <h1>🏆 Leaderboard</h1>
+    <div class="gwBanner">🎁 Weekly Giveaway: $100 for the Top 3 players!</div>
+    <div id="boardList"></div>
+    <p id="boardNote"></p>
+    <button class="bigbtn" id="boardCloseBtn">Close</button>
+  </div>
 <script src="game.js"></script>
 </body>
 </html>
