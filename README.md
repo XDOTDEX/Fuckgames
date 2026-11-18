@@ -55,6 +55,13 @@ npx serve .
 python3 -m http.server
 ```
 
+**Python version:**
+
+```bash
+pip install pygame
+python bed_bounce.py
+```
+
 ## 📁 Files
 
 | File         | What it is                                   |
@@ -62,6 +69,7 @@ python3 -m http.server
 | `index.html` | Page structure + HUD + menus                 |
 | `style.css`  | All styling (cream UI, like the video)       |
 | `game.js`    | Game engine, physics, faces & sounds (vanilla JS + WebAudio fallback) |
+| `bed_bounce.py` | Full **Python (pygame)** version of the game — same faces, sounds & gameplay |
 
 ## 🛠️ Tech
 
