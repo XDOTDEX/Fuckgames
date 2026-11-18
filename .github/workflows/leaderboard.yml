@@ -1,0 +1,55 @@
+name: Update Leaderboard
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh leaderboard table in README
+        run: |
+          python3 - <<'EOF'
+          import json, urllib.request, io, re, datetime
+          URL = "https://bed-bounce-lb-default-rtdb.asia-southeast1.firebasedatabase.app/scores.json"
+          data = json.load(urllib.request.urlopen(URL)) or {}
+          rows = sorted(data.values(), key=lambda v: v.get("score", 0), reverse=True)[:10]
+          medals = ["\U0001F947", "\U0001F948", "\U0001F949"]
+          lines = ["| # | Player | Score |", "|---|--------|-------|"]
+          for i, r in enumerate(rows):
+              rank = medals[i] if i < 3 else str(i + 1)
+              name = str(r.get("name", "Player")).replace("|", " ").strip() or "Player"
+              lines.append("| %s | %s | %s |" % (rank, name, r.get("score", 0)))
+          if not rows:
+              lines.append("| - | No scores yet - be the first! | - |")
+          dhaka = datetime.datetime.utcnow() + datetime.timedelta(hours=6)
+          table = "\n".join(lines) + "\n\n_Last updated: %s (Dhaka time) - refreshes every ~5 minutes._" % dhaka.strftime("%d %b %Y, %H:%M")
+          readme = io.open("README.md", encoding="utf-8").read()
+          new = re.sub(r"<!-- LEADERBOARD:START -->.*?<!-- LEADERBOARD:END -->",
+                       "<!-- LEADERBOARD:START -->\n" + table + "\n<!-- LEADERBOARD:END -->",
+                       readme, flags=re.S)
+          if new != readme:
+              io.open("README.md", "w", encoding="utf-8").write(new)
+              print("leaderboard updated")
+          else:
+              print("no change")
+          EOF
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+          else
+            git config user.name "leaderboard-bot"
+            git config user.email "actions@github.com"
+            git add README.md
+            git commit -m "Update leaderboard"
+            git push
+          fi
