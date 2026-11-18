@@ -8,6 +8,19 @@
 ▶️ **Web:** https://xdotdex.github.io/Fuckgames/ — no install, just open and play!
 🤖 **Telegram:** [@BedBouncebot](https://t.me/BedBouncebot) — play right inside Telegram!
 
+## 🏆 Leaderboard & 🎁 Giveaway
+
+The game has a **live global leaderboard** — every score lands on the same board, wherever you play from.
+
+- 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
+- 🥇 **Top 10** players are shown on the board, and your own rank is shown at game over
+- 🎯 Land a faller on the **sleeper's head** for a **+2 points** bonus (anywhere else on the bed is +1)
+
+### 🎁 Weekly Giveaway — $100 for the Top 3!
+
+Every week, the **Top 3 players** on the leaderboard share a **$100 giveaway**.
+Play, climb the board, and stay in the Top 3 when the week ends!
+
 ## 👤 Author
 
 **DExTER** — follow / say hi:
@@ -31,6 +44,7 @@ catch them, and watch them bounce off with the **actual sounds from the video**.
 
 - **Drag** the bed left–right (touch, mouse, or `←` `→` arrow keys)
 - Catch a falling guy on the bed → he **bounces off** with a *boing* from the original video — **+1 point**
+- Land him right on the **sleeper's head** → **+2 points!** 🎯
 - Miss him → **SPLAT!** 💥 — Game Over!
 - Beat your own **BEST** score (saved automatically)
 
@@ -40,6 +54,7 @@ catch them, and watch them bounce off with the **actual sounds from the video**.
 - 🔊 **Real sounds from the video** — bounce, splat and game-over sounds sliced straight out of the video's audio, nothing skipped
 - 📷 **Your face in the game** — upload any photo and it becomes the falling guys' face
 - 🏆 Score + persistent **BEST** counter, just like the video's HUD
+- 🌍 **Live global leaderboard** (Firebase) with Telegram auto-names + a **$100 weekly giveaway** for the Top 3
 - ⏸️ Pause button & 🔊 sound on/off toggle
 - 📱 Fully responsive — plays on phone and desktop, no install, no build step
 
