@@ -22,7 +22,8 @@ jobs:
           data = json.load(urllib.request.urlopen(URL)) or {}
           rows = sorted(data.values(), key=lambda v: v.get("score", 0), reverse=True)[:10]
           medals = ["\U0001F947", "\U0001F948", "\U0001F949"]
-          lines = ["| # | Player | Score |", "|---|--------|-------|"]
+          lines = ["| # | Player | Score | Prize |", "|---|--------|-------|-------|"]
+          prizes = ["$50", "$30", "$20"]
           for i, r in enumerate(rows):
               rank = medals[i] if i < 3 else str(i + 1)
               name = str(r.get("name", "Player")).replace("|", " ").strip() or "Player"
@@ -31,9 +32,10 @@ jobs:
                   cell = '<img src="%s" width="24" height="24" alt=""> %s' % (photo, name)
               else:
                   cell = name
-              lines.append("| %s | %s | %s |" % (rank, cell, r.get("score", 0)))
+              prize = prizes[i] if i < 3 else "$0"
+              lines.append("| %s | %s | %s | %s |" % (rank, cell, r.get("score", 0), prize))
           if not rows:
-              lines.append("| - | No scores yet - be the first! | - |")
+              lines.append("| - | No scores yet - be the first! | - | - |")
           dhaka = datetime.datetime.utcnow() + datetime.timedelta(hours=6)
           table = "\n".join(lines) + "\n\n_Last updated: %s (Dhaka time) - refreshes every ~5 minutes._" % dhaka.strftime("%d %b %Y, %H:%M")
           readme = io.open("README.md", encoding="utf-8").read()
