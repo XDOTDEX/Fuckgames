@@ -528,7 +528,7 @@ function fetchBoard(){
     if(data){
       Object.keys(data).forEach(function(k){
         var v=data[k]||{};
-        boardRows.push({key:k, name:v.name||'Player', score:v.score||0, mine:k===key});
+        boardRows.push({key:k, name:v.name||'Player', score:v.score||0, photo:v.photo||'', mine:k===key});
       });
     }
     boardRows.sort(function(a,b){ return b.score-a.score; });
@@ -551,7 +551,8 @@ function submitScore(){
   var name=playerName(), key=myKey();
   var me=null;
   for(var i=0;i<boardRows.length;i++){ if(boardRows[i].key===key){ me=boardRows[i]; break; } }
-  if(!me){ me={key:key, name:name, score:0, mine:true}; boardRows.push(me); }
+  if(!me){ me={key:key, name:name, score:0, photo:'', mine:true}; boardRows.push(me); }
+  if(tgUser && tgUser.photo_url) me.photo=tgUser.photo_url;
   me.name=name;
   if(score>me.score) me.score=score;
   boardRows.sort(function(a,b){ return b.score-a.score; });
@@ -561,10 +562,16 @@ function submitScore(){
   if(!dbReady()) return;
   fetch(dbPath('/scores/'+key+'.json')).then(function(r){ return r.json(); }).then(function(cur){
     var prev=(cur && cur.score) || 0;
-    if(score>prev){
-      return fetch(dbPath('/scores/'+key+'.json'), {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, score:score, ts:Date.now()})});
+    var myPhoto=(tgUser && tgUser.photo_url) ? tgUser.photo_url : '';
+    if(score>prev || (myPhoto && (!cur || cur.photo!==myPhoto))){
+      return fetch(dbPath('/scores/'+key+'.json'), {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name:name, score:Math.max(score,prev), photo:myPhoto, ts:Date.now()})});
     }
   }).then(function(){ fetchBoard(); }).catch(function(){});
+}
+function avaHtml(r){
+  if(r.photo) return '<img class="bava" src="'+escHtml(r.photo)+'" alt="" onerror="this.remove()">';
+  var ch=(r.name||'?').trim().charAt(0).toUpperCase()||'?';
+  return '<span class="bava bavaL">'+escHtml(ch)+'</span>';
 }
 function renderBoard(){
   var rows=boardRows.slice(0,10);
@@ -572,7 +579,7 @@ function renderBoard(){
   for(var i=0;i<rows.length;i++){
     var r=rows[i];
     var medal = i===0 ? '🥇' : (i===1 ? '🥈' : (i===2 ? '🥉' : '#'+(i+1)));
-    html+='<div class="brow'+(r.mine?' me':'')+'"><span class="brank">'+medal+'</span><span class="bname">'+escHtml(r.name)+'</span><span class="bscore">'+r.score+'</span></div>';
+    html+='<div class="brow'+(r.mine?' me':'')+'"><span class="brank">'+medal+'</span>'+avaHtml(r)+'<span class="bname">'+escHtml(r.name)+'</span><span class="bscore">'+r.score+'</span></div>';
   }
   if(!rows.length) html='<p style="text-align:center">'+(boardLoaded ? 'No scores yet — be the first!' : 'Loading…')+'</p>';
   document.getElementById('boardList').innerHTML=html;
