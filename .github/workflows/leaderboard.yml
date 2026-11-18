@@ -26,7 +26,12 @@ jobs:
           for i, r in enumerate(rows):
               rank = medals[i] if i < 3 else str(i + 1)
               name = str(r.get("name", "Player")).replace("|", " ").strip() or "Player"
-              lines.append("| %s | %s | %s |" % (rank, name, r.get("score", 0)))
+              photo = str(r.get("photo", "")).replace('"', "").replace("<", "").replace(">", "").strip()
+              if photo:
+                  cell = '<img src="%s" width="24" height="24" alt=""> %s' % (photo, name)
+              else:
+                  cell = name
+              lines.append("| %s | %s | %s |" % (rank, cell, r.get("score", 0)))
           if not rows:
               lines.append("| - | No scores yet - be the first! | - |")
           dhaka = datetime.datetime.utcnow() + datetime.timedelta(hours=6)
