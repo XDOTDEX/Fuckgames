@@ -221,7 +221,7 @@ function drawStick(f){
   var fx=f.x, fy=f.y;
   var neckY=fy+f.r*0.85, hipY=neckY+26;
   ctx.save();
-  ctx.strokeStyle='#111'; ctx.lineWidth=3.4; ctx.lineCap='round'; ctx.lineJoin='round';
+  ctx.strokeStyle='#16a34a'; ctx.lineWidth=3.4; ctx.lineCap='round'; ctx.lineJoin='round';
   ctx.beginPath();
   /* torso */
   ctx.moveTo(fx,neckY); ctx.lineTo(fx,hipY);
@@ -358,13 +358,26 @@ function loop(ts){
         /* MISS */
         splatMark={x:f.x};
         shake=13; flashRed=1;
-        faller=null;
+        f.state='splat'; f.splatT=0; f.y=floorY+8-62;
+        for(var si=0;si<16;si++){
+          particles.push({x:f.x,y:floorY+6,vx:(Math.random()-0.5)*6,vy:-Math.random()*4-0.5,life:1,s:Math.random()*3.4+2,c:si%2?'#16a34a':'#e8a812'});
+        }
         if(state==='playing') gameOver();
       }
     } else if(f.state==='bounced'){
       f.vy+=0.3*dt; f.y+=f.vy*dt; f.x+=f.vx*dt; f.rot+=f.vr*dt;
       drawStick(f);
       if(f.y<-90||f.x<-70||f.x>W+70){ /* gone — next already scheduled */ faller=null; }
+    } else if(f.state==='splat'){
+      f.splatT+=dt;
+      var sp=Math.min(f.splatT/16,1);
+      ctx.save();
+      ctx.translate(f.x, floorY+8);
+      ctx.scale(1+0.9*sp, Math.max(0.18,1-0.82*sp));
+      ctx.translate(-f.x, -(floorY+8));
+      drawStick(f);
+      ctx.restore();
+      if(f.splatT>40) faller=null;
     }
   }
 
@@ -374,7 +387,7 @@ function loop(ts){
     p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=0.12*dt; p.life-=0.03*dt;
     if(p.life<=0){ particles.splice(i,1); continue; }
     ctx.save(); ctx.globalAlpha=Math.max(p.life,0);
-    ctx.fillStyle='#e8a812';
+    ctx.fillStyle=p.c||'#e8a812';
     ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill();
     ctx.restore();
   }

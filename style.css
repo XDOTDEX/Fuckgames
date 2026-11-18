@@ -81,3 +81,22 @@
     display:flex;align-items:center;gap:5px;
   }
   #ghCredit svg{width:14px;height:14px;fill:rgba(120,110,88,.78);flex:none}
+
+  /* game over card pop-in */
+  @keyframes popIn{0%{transform:scale(.75);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1);opacity:1}}
+  #overScreen:not(.hidden) > *{animation:popIn .45s cubic-bezier(.2,1.4,.4,1) both}
+  #overScreen:not(.hidden) > *:nth-child(2){animation-delay:.05s}
+  #overScreen:not(.hidden) > *:nth-child(3){animation-delay:.1s}
+  #overScreen:not(.hidden) > *:nth-child(4){animation-delay:.15s}
+  #overScreen:not(.hidden) > *:nth-child(5){animation-delay:.2s}
+  /* animated rocket - center of the UI */
+  #rocketIcon{
+    position:absolute;top:44%;left:50%;width:92px;height:92px;z-index:2;
+    pointer-events:none;user-select:none;opacity:.95;
+    transform:translate(-50%,-50%);
+    animation:rocketFloat 3.6s ease-in-out infinite;
+  }
+  @keyframes rocketFloat{
+    0%,100%{transform:translate(-50%,-50%) translateY(0)}
+    50%{transform:translate(-50%,-50%) translateY(-9px)}
+  }
