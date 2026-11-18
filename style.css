@@ -113,3 +113,5 @@
 .gwBanner{background:linear-gradient(90deg,#ffd34d,#ffb703);color:#5b4300;font-weight:800;border-radius:12px;padding:9px 12px;margin:8px auto 2px;width:min(330px,86vw);text-align:center;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .gwPill{display:inline-block;background:linear-gradient(90deg,#ffd34d,#ffb703);color:#5b4300;font-weight:800;border-radius:999px;padding:6px 14px;font-size:13px;margin:8px 0 2px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 #boardBtn{background:#ffe9a8;border-color:#e6c34a}
+#liveDot{text-align:center;font-size:12px;font-weight:700;color:#1a9e4b;margin:4px 0 0;animation:livePulse 1.6s infinite}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.3}}

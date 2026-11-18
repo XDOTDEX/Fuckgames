@@ -587,4 +587,7 @@ document.getElementById('boardCloseBtn').addEventListener('click', closeBoard);
 var plEl=document.getElementById('playerLine');
 if(plEl && tgUser) plEl.textContent='👤 Playing as '+playerName();
 fetchBoard();
+setInterval(function(){
+  if(!document.getElementById('boardScreen').classList.contains('hidden')) fetchBoard();
+}, 5000);
 })();
