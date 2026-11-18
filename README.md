@@ -18,11 +18,17 @@ The game has a **live global leaderboard** — every score lands on the same boa
 | # | Player | Score |
 |---|--------|-------|
 | 🥇 | Dalim Gay | 178 |
-| 🥈 | Alexander | 9 |
-| 🥉 | Frank Lewis | 8 |
-| 4 | DEメTER | 4 |
+| 🥈 | fuck | 47 |
+| 🥉 | David Bennet | 25 |
+| 4 | Lola Hill | 19 |
+| 5 | <img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander | 9 |
+| 6 | Frank Lewis | 8 |
+| 7 | Stephanie Campbell | 8 |
+| 8 | NeonWhale | 7 |
+| 9 | Bowen Wood | 7 |
+| 10 | <img src="https://t.me/i/userpic/320/5YT2zklN6a--g0mYaS1O86_3eRNywSqwjAflZE2Z4PQPvwDDAecYmX7jTjjQFmGd.svg" width="24" height="24" alt=""> DEメTER | 5 |
 
-_Last updated: 18 Nov 2026, 23:41 (Dhaka time) - refreshes every ~5 minutes._
+_Last updated: 19 Nov 2026, 00:07 (Dhaka time) - refreshes every ~5 minutes._
 <!-- LEADERBOARD:END -->
 
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
