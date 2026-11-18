@@ -1,5 +1,13 @@
 # 🛏️ Bed Bounce — *Khela ya nhi yeh* 😂🤣
 
+## 🎮 Play Now
+
+[![Play the Game](https://img.shields.io/badge/PLAY%20THE%20GAME-Click%20Here-brightgreen?style=for-the-badge)](https://xdotdex.github.io/Fuckgames/)
+[![Telegram Bot](https://img.shields.io/badge/TELEGRAM%20BOT-@BedBouncebot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/BedBouncebot)
+
+▶️ **Web:** https://xdotdex.github.io/Fuckgames/ — no install, just open and play!
+🤖 **Telegram:** [@BedBouncebot](https://t.me/BedBouncebot) — play right inside Telegram!
+
 ## 👤 Author
 
 **DExTER** — follow / say hi:
@@ -19,16 +27,11 @@ catch them, and watch them bounce off with the **actual sounds from the video**.
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![No Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
 
-## 🎮 Play Online
-
-▶️ **https://xdotdex.github.io/Fuckgames/** — no install, just open and play!
-
 ## 🎮 How to Play
 
 - **Drag** the bed left–right (touch, mouse, or `←` `→` arrow keys)
 - Catch a falling guy on the bed → he **bounces off** with a *boing* from the original video — **+1 point**
-- Miss him → **SPLAT!** 💥 and you lose a heart
-- **3 misses = Game Over**
+- Miss him → **SPLAT!** 💥 — Game Over!
 - Beat your own **BEST** score (saved automatically)
 
 ## ✨ Features
