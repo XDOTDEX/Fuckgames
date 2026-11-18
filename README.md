@@ -12,6 +12,19 @@
 
 The game has a **live global leaderboard** — every score lands on the same board, wherever you play from.
 
+### 📊 Live Standings
+
+<!-- LEADERBOARD:START -->
+| # | Player | Score |
+|---|--------|-------|
+| 🥇 | Dalim Gay | 178 |
+| 🥈 | Alexander | 9 |
+| 🥉 | Frank Lewis | 8 |
+| 4 | DEメTER | 4 |
+
+_Last updated: 18 Nov 2026, 23:41 (Dhaka time) - refreshes every ~5 minutes._
+<!-- LEADERBOARD:END -->
+
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
 - 🥇 **Top 10** players are shown on the board, and your own rank is shown at game over
 - 🎯 Land a faller on the **sleeper's head** for a **+2 points** bonus (anywhere else on the bed is +1)
