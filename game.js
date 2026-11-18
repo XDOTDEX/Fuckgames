@@ -579,7 +579,8 @@ function renderBoard(){
   for(var i=0;i<rows.length;i++){
     var r=rows[i];
     var medal = i===0 ? '🥇' : (i===1 ? '🥈' : (i===2 ? '🥉' : '#'+(i+1)));
-    html+='<div class="brow'+(r.mine?' me':'')+'"><span class="brank">'+medal+'</span>'+avaHtml(r)+'<span class="bname">'+escHtml(r.name)+'</span><span class="bscore">'+r.score+'</span></div>';
+    var prize = i<3 ? '<span class="bprize">'+['$50','$30','$20'][i]+'</span>' : '<span class="bprize zero">$0</span>';
+    html+='<div class="brow'+(r.mine?' me':'')+'"><span class="brank">'+medal+'</span>'+avaHtml(r)+'<span class="bname">'+escHtml(r.name)+'</span>'+prize+'<span class="bscore">'+r.score+'</span></div>';
   }
   if(!rows.length) html='<p style="text-align:center">'+(boardLoaded ? 'No scores yet — be the first!' : 'Loading…')+'</p>';
   document.getElementById('boardList').innerHTML=html;

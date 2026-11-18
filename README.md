@@ -37,7 +37,7 @@ _Last updated: 19 Nov 2026, 00:07 (Dhaka time) - refreshes every ~5 minutes._
 
 ### 🎁 Weekly Giveaway — $100 for the Top 3!
 
-Every week, the **Top 3 players** on the leaderboard share a **$100 giveaway**.
+Every week, the **Top 3 players** on the leaderboard split a **$100 giveaway**: 🥇 **1st = $50** · 🥈 **2nd = $30** · 🥉 **3rd = $20**. Everyone else gets $0 — only the Top 3 are paid.
 Play, climb the board, and stay in the Top 3 when the week ends!
 
 ## 👤 Author

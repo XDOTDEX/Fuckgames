@@ -106,8 +106,8 @@
 .brow{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.07);border-radius:12px;padding:8px 12px;margin:6px 0;font-size:15px;color:#2b2b2b}
 .brow.me{background:#ffe9a8;border-color:#e6c34a;font-weight:700}
 .brank{width:36px;text-align:center;flex:none}
-.bname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bscore{font-weight:800;flex:none}
+.bname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.bscore{font-weight:800;flex:none;margin-left:auto}
 #boardNote{font-size:12px;opacity:.65;margin-top:6px}
 #playerLine{font-size:13px;opacity:.75;margin:6px 0 0;min-height:16px}
 .gwBanner{background:linear-gradient(90deg,#ffd34d,#ffb703);color:#5b4300;font-weight:800;border-radius:12px;padding:9px 12px;margin:8px auto 2px;width:min(330px,86vw);text-align:center;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
@@ -117,3 +117,5 @@
 @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.3}}
 .bava{width:30px;height:30px;border-radius:50%;flex:none;object-fit:cover;background:#e8e2d0}
 .bavaL{display:flex;align-items:center;justify-content:center;font-weight:800;color:#7a6a3a;font-size:14px}
+.bprize{font-weight:800;color:#1a9e4b;font-size:14px;flex:none}
+.bprize.zero{color:#b3ab90;font-weight:600}
