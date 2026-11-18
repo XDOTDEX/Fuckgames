@@ -28,7 +28,7 @@ The game has a **live global leaderboard** — every score lands on the same boa
 | 9 | <img src="https://t.me/i/userpic/320/Yup8yUidlCL0T_XfpogizYIYK1aFlid_dxHFO7t6FxU422YSdeP9rktq7b-2_8Gv.svg" width="24" height="24" alt=""> Bowen Wood | 12 | $0 |
 | 10 | <img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander | 9 | $0 |
 
-_Last updated: 19 Nov 2026, 00:32 (Dhaka time) - refreshes every ~5 minutes._
+_Last updated: 19 Nov 2026, 05:37 (Dhaka time) - refreshes every ~5 minutes._
 <!-- LEADERBOARD:END -->
 
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
