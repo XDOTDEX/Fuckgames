@@ -15,20 +15,20 @@ The game has a **live global leaderboard** — every score lands on the same boa
 ### 📊 Live Standings
 
 <!-- LEADERBOARD:START -->
-| # | Player | Score |
-|---|--------|-------|
-| 🥇 | Dalim Gay | 178 |
-| 🥈 | fuck | 47 |
-| 🥉 | David Bennet | 25 |
-| 4 | Lola Hill | 19 |
-| 5 | <img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander | 9 |
-| 6 | Frank Lewis | 8 |
-| 7 | Stephanie Campbell | 8 |
-| 8 | NeonWhale | 7 |
-| 9 | Bowen Wood | 7 |
-| 10 | <img src="https://t.me/i/userpic/320/5YT2zklN6a--g0mYaS1O86_3eRNywSqwjAflZE2Z4PQPvwDDAecYmX7jTjjQFmGd.svg" width="24" height="24" alt=""> DEメTER | 5 |
+| # | Player | Score | Prize |
+|---|--------|-------|-------|
+| 🥇 | <img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/dalim.svg" width="24" height="24" alt=""> Dalim Gay | 178 | $50 |
+| 🥈 | <img src="https://t.me/i/userpic/320/5YT2zklN6a--g0mYaS1O86_3eRNywSqwjAflZE2Z4PQPvwDDAecYmX7jTjjQFmGd.svg" width="24" height="24" alt=""> DEメTER | 52 | $30 |
+| 🥉 | fuck | 47 | $20 |
+| 4 | <img src="https://t.me/i/userpic/320/WB6tXkgT7l-y4o8cX49MomZ83jxbv98Ua82lrVEjI16O-iRn68et5zg9UOD9XpEp.svg" width="24" height="24" alt=""> Lola Hill | 26 | $0 |
+| 5 | <img src="https://t.me/i/userpic/320/CRkS3s70yrRHu1BHUwfl1kyZf8T0R-z1akjDM2FgVlrAJekfm_3Uofu3yjTE4VlB.svg" width="24" height="24" alt=""> David Bennet | 25 | $0 |
+| 6 | <img src="https://t.me/i/userpic/320/ZBbDHEuxavTHm1BQq9ReJTTltYabcqPJma1Zz6AMssmtqlfQvb3GRULreDEObqFB.svg" width="24" height="24" alt=""> Frank Lewis | 16 | $0 |
+| 7 | <img src="https://t.me/i/userpic/320/WDyzbCI5KWZ3KK7Zx_pVUSVobvG9qRrhzzOmlJjNMmBD_3N9GNiftLkYSru5J1qS.svg" width="24" height="24" alt=""> NeonWhale | 15 | $0 |
+| 8 | <img src="https://t.me/i/userpic/320/gJ4YINZ1wyIJCHcdywfsEyUtXNpYk2025Yk2GTOyyLkPPRAwKFZHwXBgqXkpqvJE.svg" width="24" height="24" alt=""> Stephanie Campbell | 12 | $0 |
+| 9 | <img src="https://t.me/i/userpic/320/Yup8yUidlCL0T_XfpogizYIYK1aFlid_dxHFO7t6FxU422YSdeP9rktq7b-2_8Gv.svg" width="24" height="24" alt=""> Bowen Wood | 12 | $0 |
+| 10 | <img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander | 9 | $0 |
 
-_Last updated: 19 Nov 2026, 00:07 (Dhaka time) - refreshes every ~5 minutes._
+_Last updated: 19 Nov 2026, 13:00 (Dhaka time) - refreshes every ~5 minutes._
 <!-- LEADERBOARD:END -->
 
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
@@ -42,7 +42,7 @@ Every week, the **Top 3 players** on the leaderboard split a **$100 giveaway**: 
 ⏰ **Ends:** every **Sunday at 11:59 PM (Dhaka time, UTC+6)** — this week's giveaway ends **Sunday, 22 November 2026, 11:59 PM**. A live countdown also runs inside the game.
 
 <!-- GIVEAWAY:START -->
-⏳ **Time left this week: …** - ends **Sunday, 22 November 2026, 11:59 PM (Dhaka time)**
+⏳ **Time left this week: 3d 10:59:05** - ends **Sunday, 22 November 2026, 11:59 PM (Dhaka time)**
 <!-- GIVEAWAY:END -->
 Play, climb the board, and stay in the Top 3 when the week ends!
 
