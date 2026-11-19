@@ -100,6 +100,17 @@
     0%,100%{transform:translate(-50%,-50%) translateY(0)}
     50%{transform:translate(-50%,-50%) translateY(-9px)}
   }
+  /* falling meteors - sky decoration */
+  .meteor{position:absolute;z-index:1;pointer-events:none;user-select:none;opacity:0}
+  .meteor.m1{width:64px;height:64px;left:10%;top:5%;animation:meteorFall 8s linear infinite}
+  .meteor.m2{width:46px;height:46px;left:56%;top:1%;animation:meteorFall 11s linear infinite;animation-delay:2.5s}
+  .meteor.m3{width:54px;height:54px;left:84%;top:9%;animation:meteorFall 9.5s linear infinite;animation-delay:5.2s}
+  @keyframes meteorFall{
+    0%{transform:translate(0,0);opacity:0}
+    10%{opacity:.85}
+    42%{opacity:.85}
+    58%,100%{transform:translate(-48px,124px);opacity:0}
+  }
 
 #finalRank{margin-top:4px;font-weight:700;color:#b8860b;letter-spacing:.03em;min-height:20px}
 #boardList{width:min(330px,86vw);margin:8px auto 4px;text-align:left;max-height:46vh;overflow-y:auto}
