@@ -18,7 +18,7 @@ The game has a **live global leaderboard** — every score lands on the same boa
 <table>
 <tr><th>#</th><th width="44%">Player</th><th>Score</th><th>Prize</th><th>Icon</th></tr>
 <tr><td>🥇</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/dalim.svg" width="24" height="24" alt=""> Dalim&nbsp;Gay</td><td>178</td><td>$50</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge1.svg" width="22" height="22" alt=""></td></tr>
-<tr><td>🥈</td><td><img src="https://t.me/i/userpic/320/5YT2zklN6a--g0mYaS1O86_3eRNywSqwjAflZE2Z4PQPvwDDAecYmX7jTjjQFmGd.svg" width="24" height="24" alt=""> DEメTER</td><td>52</td><td>$30</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge2.svg" width="22" height="22" alt=""><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badgeboss.svg" width="22" height="22" alt=""></td></tr>
+<tr><td>🥈</td><td><img src="https://t.me/i/userpic/320/5YT2zklN6a--g0mYaS1O86_3eRNywSqwjAflZE2Z4PQPvwDDAecYmX7jTjjQFmGd.svg" width="24" height="24" alt=""> DEメTER</td><td>56</td><td>$30</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge2.svg" width="22" height="22" alt=""><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badgeboss.svg" width="22" height="22" alt=""></td></tr>
 <tr><td>🥉</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/fuck.svg" width="24" height="24" alt=""> fuck</td><td>47</td><td>$20</td><td><img src="https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge3.svg" width="22" height="22" alt=""></td></tr>
 <tr><td>4</td><td><img src="https://t.me/i/userpic/320/WB6tXkgT7l-y4o8cX49MomZ83jxbv98Ua82lrVEjI16O-iRn68et5zg9UOD9XpEp.svg" width="24" height="24" alt=""> Lola&nbsp;Hill</td><td>26</td><td>$0</td><td>-</td></tr>
 <tr><td>5</td><td><img src="https://t.me/i/userpic/320/CRkS3s70yrRHu1BHUwfl1kyZf8T0R-z1akjDM2FgVlrAJekfm_3Uofu3yjTE4VlB.svg" width="24" height="24" alt=""> David&nbsp;Bennet</td><td>25</td><td>$0</td><td>-</td></tr>
@@ -29,7 +29,7 @@ The game has a **live global leaderboard** — every score lands on the same boa
 <tr><td>10</td><td><img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander</td><td>9</td><td>$0</td><td>-</td></tr>
 </table>
 
-_Last updated: 19 Nov 2026, 13:35 (Dhaka time) - refreshes every ~5 minutes._
+_Last updated: 19 Nov 2026, 19:44 (Dhaka time) - refreshes every ~5 minutes._
 <!-- LEADERBOARD:END -->
 
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
@@ -43,7 +43,7 @@ Every week, the **Top 3 players** on the leaderboard split a **$100 giveaway**: 
 ⏰ **Ends:** every **Sunday at 11:59 PM (Dhaka time, UTC+6)** — this week's giveaway ends **Sunday, 22 November 2026, 11:59 PM**. A live countdown also runs inside the game.
 
 <!-- GIVEAWAY:START -->
-⏳ **Time left this week: 3d 10:24:10** - ends **Sunday, 22 November 2026, 11:59 PM (Dhaka time)**
+⏳ **Time left this week: 3d 04:15:33** - ends **Sunday, 22 November 2026, 11:59 PM (Dhaka time)**
 <!-- GIVEAWAY:END -->
 Play, climb the board, and stay in the Top 3 when the week ends!
 
