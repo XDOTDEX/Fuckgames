@@ -40,6 +40,10 @@ _Last updated: 19 Nov 2026, 00:07 (Dhaka time) - refreshes every ~5 minutes._
 Every week, the **Top 3 players** on the leaderboard split a **$100 giveaway**: 🥇 **1st = $50** · 🥈 **2nd = $30** · 🥉 **3rd = $20**. Everyone else gets $0 — only the Top 3 are paid.
 
 ⏰ **Ends:** every **Sunday at 11:59 PM (Dhaka time, UTC+6)** — this week's giveaway ends **Sunday, 22 November 2026, 11:59 PM**. A live countdown also runs inside the game.
+
+<!-- GIVEAWAY:START -->
+⏳ **Time left this week: …** - ends **Sunday, 22 November 2026, 11:59 PM (Dhaka time)**
+<!-- GIVEAWAY:END -->
 Play, climb the board, and stay in the Top 3 when the week ends!
 
 ## 👤 Author
