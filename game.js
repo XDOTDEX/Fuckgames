@@ -34,6 +34,13 @@ function sfxPrime(){
 }
 function playSfx(a){
   if(!soundOn||!a) return false;
+  try{
+    if(!a._boosted && typeof AC!=='undefined' && AC){
+      var _src=AC.createMediaElementSource(a), _g=AC.createGain();
+      _g.gain.value=1.5; _src.connect(_g); _g.connect(AC.destination);
+      a._boosted=true;
+    }
+  }catch(e){}
   try{ a.currentTime=0; var pr=a.play(); if(pr&&pr.catch) pr.catch(function(){}); return true; }catch(e){ return false; }
 }
 
@@ -72,33 +79,33 @@ function noiseBurst(dur,vol,freq,when){
 function sndBoing(power){
   sfxInit(); if(SFX.bounce && playSfx(SFX.bounce[(Math.random()*SFX.bounce.length)|0])) return;
   var base=180+Math.min(power||0,14)*14;
-  tone(base,base*2.6,0.28,'sine',0.32,0);
-  tone(base*1.5,base*3.1,0.2,'triangle',0.14,0.02);
-  tone(90,240,0.12,'square',0.05,0);
+  tone(base,base*2.6,0.28,'sine',0.50,0);
+  tone(base*1.5,base*3.1,0.2,'triangle',0.22,0.02);
+  tone(90,240,0.12,'square',0.08,0);
 }
 /* POP / stretch while dragging fast — tiny tick */
-function sndTick(){ tone(500,700,0.05,'triangle',0.05,0); }
+function sndTick(){ tone(500,700,0.05,'triangle',0.09,0); }
 /* SPLAT on miss — wet thud: noise burst + low drop */
 function sndSplat(){
   sfxInit(); if(playSfx(SFX.splat)) return;
-  noiseBurst(0.3,0.5,700,0);
-  noiseBurst(0.18,0.3,1600,0.01);
-  tone(320,45,0.32,'sine',0.4,0);
-  tone(180,40,0.25,'triangle',0.25,0.03);
+  noiseBurst(0.3,0.75,700,0);
+  noiseBurst(0.18,0.45,1600,0.01);
+  tone(320,45,0.32,'sine',0.6,0);
+  tone(180,40,0.25,'triangle',0.38,0.03);
 }
 /* GAME OVER jingle — descending wah-wah-wah-waaah */
 function sndGameOver(){
   sfxInit(); if(playSfx(SFX.gameover)) return;
   var notes=[392,370,349,311];
   for(var i=0;i<notes.length;i++){
-    tone(notes[i],notes[i]*0.94, i===3?0.65:0.22,'triangle',0.26, 0.28+i*0.24);
-    tone(notes[i]/2,notes[i]/2*0.94, i===3?0.65:0.22,'sine',0.12, 0.28+i*0.24);
+    tone(notes[i],notes[i]*0.94, i===3?0.65:0.22,'triangle',0.40, 0.28+i*0.24);
+    tone(notes[i]/2,notes[i]/2*0.94, i===3?0.65:0.22,'sine',0.18, 0.28+i*0.24);
   }
 }
 /* little cheer arpeggio on new best */
 function sndBest(){
   var n=[523,659,784,1047];
-  for(var i=0;i<n.length;i++) tone(n[i],n[i],0.16,'triangle',0.2,i*0.09);
+  for(var i=0;i<n.length;i++) tone(n[i],n[i],0.16,'triangle',0.3,i*0.09);
 }
 
 /* ============ FACES ============ */
@@ -453,10 +460,6 @@ document.getElementById('resumeBtn').addEventListener('click',togglePause);
 document.getElementById('restartBtn2').addEventListener('click',startGame);
 document.getElementById('startBtn').addEventListener('click',startGame);
 document.getElementById('againBtn').addEventListener('click',startGame);
-document.getElementById('soundBtn').addEventListener('click',function(){
-  soundOn=!soundOn; this.textContent=soundOn?'🔊':'🔇';
-  if(soundOn){ audio(); sndTick(); }
-});
 
 var fileInput=document.getElementById('fileInput');
 function openPicker(){ fileInput.click(); }
@@ -599,3 +602,53 @@ setInterval(function(){
   if(!document.getElementById('boardScreen').classList.contains('hidden')) fetchBoard();
 }, 5000);
 })();
+
+
+/* ===== Weekly giveaway countdown (week ends Sunday 23:59:59, Dhaka UTC+6) ===== */
+(function(){
+  function nextEnd(){
+    var OFF = 6*3600*1000;
+    var nowD = new Date(Date.now() + OFF);
+    var add = (7 - nowD.getUTCDay()) % 7; /* days until Sunday */
+    var t = Date.UTC(nowD.getUTCFullYear(), nowD.getUTCMonth(), nowD.getUTCDate() + add, 23, 59, 59) - OFF;
+    if (t <= Date.now()) t += 7*24*3600*1000;
+    return t;
+  }
+  var target = nextEnd();
+  function pad(n){ return (n<10?'0':'') + n; }
+  function tick(){
+    var ms = target - Date.now();
+    if (ms <= 0){ target = nextEnd(); ms = target - Date.now(); }
+    var s = Math.floor(ms/1000);
+    var d = Math.floor(s/86400); s -= d*86400;
+    var h = Math.floor(s/3600); s -= h*3600;
+    var m = Math.floor(s/60); s -= m*60;
+    var txt = '⏳ Giveaway ends in ' + (d>0 ? d + 'd ' : '') + pad(h) + ':' + pad(m) + ':' + pad(s);
+    var a = document.getElementById('gwCount1'); if (a) a.textContent = txt;
+    var b = document.getElementById('gwCount2'); if (b) b.textContent = txt;
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+/* ===== Theme music: video-2 audio, looped ===== */
+var themeAudio = document.getElementById('themeMusic');
+var musicOn = true;
+if (themeAudio) themeAudio.volume = 0.28;
+function musicStart(){
+  if (musicOn && themeAudio){
+    var p = themeAudio.play();
+    if (p && p.catch) p.catch(function(){});
+  }
+}
+function musicStop(){ if (themeAudio) themeAudio.pause(); }
+['startBtn','againBtn','restartBtn2'].forEach(function(id){
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('click', musicStart);
+});
+var mBtn = document.getElementById('musicBtn');
+if (mBtn) mBtn.addEventListener('click', function(){
+  musicOn = !musicOn;
+  this.textContent = musicOn ? '🎵' : '🔕';
+  if (musicOn) musicStart(); else musicStop();
+});
+
