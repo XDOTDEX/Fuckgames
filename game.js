@@ -171,14 +171,38 @@ function drawBed(){
   roundRect(left, top, w, mh, 6); ctx.fill();
   ctx.strokeStyle='rgba(0,0,0,.4)'; ctx.lineWidth=2;
   roundRect(left, top, w, mh, 6); ctx.stroke();
-  /* blanket — dark green, from pillow to right end */
-  var bx=left+58;
-  ctx.fillStyle='#1e4d3a';
-  roundRect(bx, top+3, w-(bx-left)-2, mh+8, 6); ctx.fill();
-  ctx.fillStyle='#276149';
-  roundRect(bx, top+3, w-(bx-left)-2, 9, 5); ctx.fill();
-  ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1.5;
-  roundRect(bx, top+3, w-(bx-left)-2, mh+8, 6); ctx.stroke();
+  /* full body under the blanket — the blanket follows the body's shape */
+  var bx=left+58, bw=w-(bx-left)-2, by=top+3, bh=mh+8;
+  ctx.beginPath();
+  ctx.moveTo(bx, by+bh);
+  ctx.lineTo(bx, by+10);
+  ctx.quadraticCurveTo(bx+2, by+1, bx+16, by+1);
+  ctx.quadraticCurveTo(bx+bw*0.30, by-3, bx+bw*0.44, by+4);
+  ctx.quadraticCurveTo(bx+bw*0.58, by+8, bx+bw*0.72, by+7);
+  ctx.quadraticCurveTo(bx+bw*0.90, by+6, bx+bw-22, by+9);
+  ctx.lineTo(bx+bw-22, by+bh);
+  ctx.closePath();
+  ctx.fillStyle='#1e4d3a'; ctx.fill();
+  ctx.strokeStyle='rgba(0,0,0,.35)'; ctx.lineWidth=1.5; ctx.stroke();
+  /* soft fold highlight along the body */
+  ctx.beginPath();
+  ctx.moveTo(bx+10, by+9);
+  ctx.quadraticCurveTo(bx+bw*0.30, by+4, bx+bw*0.44, by+10);
+  ctx.quadraticCurveTo(bx+bw*0.58, by+14, bx+bw*0.72, by+13);
+  ctx.strokeStyle='rgba(255,255,255,.14)'; ctx.lineWidth=3; ctx.lineCap='round'; ctx.stroke();
+  /* pajama shoulder next to the pillow */
+  ctx.fillStyle='#7aa2f7';
+  ctx.beginPath(); ctx.ellipse(bx+4, by+9, 13, 8, 0.15, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle='rgba(0,0,0,.25)'; ctx.lineWidth=1.2; ctx.stroke();
+  /* one arm resting on top of the blanket */
+  ctx.strokeStyle='#7aa2f7'; ctx.lineWidth=9; ctx.lineCap='round';
+  ctx.beginPath();
+  ctx.moveTo(bx+14, by+9);
+  ctx.quadraticCurveTo(bx+bw*0.22, by+17, bx+bw*0.36, by+16);
+  ctx.stroke();
+  ctx.fillStyle='#f2c29b';
+  ctx.beginPath(); ctx.arc(bx+bw*0.385, by+16, 5.5, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle='rgba(0,0,0,.25)'; ctx.lineWidth=1; ctx.stroke();
   /* pillow — white, left end */
   ctx.fillStyle='#ffffff';
   roundRect(left+8, top-12, 56, 26, 9); ctx.fill();
@@ -186,13 +210,10 @@ function drawBed(){
   roundRect(left+8, top-12, 56, 26, 9); ctx.stroke();
   /* sleeper face on the pillow */
   drawFace(left+36, top+1, 19, SLEEPER, -0.06, VID_SLEEPER);
-  /* sleeper's stick legs poking out at the right end of the blanket */
-  var lx=left+w-6, ly=top+mh-2;
-  ctx.strokeStyle='#111'; ctx.lineWidth=3; ctx.lineCap='round';
-  ctx.beginPath();
-  ctx.moveTo(lx-16, ly-4); ctx.lineTo(lx+8, ly-12); ctx.lineTo(lx+16, ly-10);
-  ctx.moveTo(lx-14, ly+2); ctx.lineTo(lx+10, ly+2); ctx.lineTo(lx+18, ly+5);
-  ctx.stroke();
+  /* feet poking out at the right end of the blanket — white socks, soles up */
+  ctx.fillStyle='#f5f2ea'; ctx.strokeStyle='rgba(0,0,0,.3)'; ctx.lineWidth=1.2;
+  ctx.beginPath(); ctx.ellipse(left+w-13, top+4, 7, 12, -0.45, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(left+w-27, top+9, 6, 10, -0.85, 0, Math.PI*2); ctx.fill(); ctx.stroke();
   ctx.restore();
 }
 function roundRect(x,y,w,h,r){
@@ -228,22 +249,33 @@ function drawStick(f){
   var l1=Math.sin(t*1.31)*0.8*flail, l2=Math.cos(t*0.91)*0.8*flail;
   var fx=f.x, fy=f.y;
   var neckY=fy+f.r*0.85, hipY=neckY+26;
+  var ax1=fx+Math.cos(a1)*24, ay1=neckY+5+Math.sin(a1)*24;
+  var ax2=fx-Math.cos(a2)*24, ay2=neckY+5+Math.sin(a2)*24;
+  var lx1=fx+Math.sin(l1)*22, ly1=hipY+24;
+  var lx2=fx-Math.sin(l2)*22, ly2=hipY+24;
   ctx.save();
-  ctx.strokeStyle='#16a34a'; ctx.lineWidth=3.4; ctx.lineCap='round'; ctx.lineJoin='round';
+  ctx.lineCap='round'; ctx.lineJoin='round';
+  /* legs - dark pants + shoes */
+  ctx.strokeStyle='#2b3a55'; ctx.lineWidth=8;
   ctx.beginPath();
-  /* torso */
-  ctx.moveTo(fx,neckY); ctx.lineTo(fx,hipY);
-  /* arms flailing */
-  ctx.moveTo(fx,neckY+5);
-  ctx.lineTo(fx+Math.cos(a1)*24, neckY+5+Math.sin(a1)*24);
-  ctx.moveTo(fx,neckY+5);
-  ctx.lineTo(fx-Math.cos(a2)*24, neckY+5+Math.sin(a2)*24);
-  /* legs kicking */
-  ctx.moveTo(fx,hipY);
-  ctx.lineTo(fx+Math.sin(l1)*22, hipY+24);
-  ctx.moveTo(fx,hipY);
-  ctx.lineTo(fx-Math.sin(l2)*22, hipY+24);
+  ctx.moveTo(fx,hipY); ctx.lineTo(lx1,ly1);
+  ctx.moveTo(fx,hipY); ctx.lineTo(lx2,ly2);
   ctx.stroke();
+  ctx.fillStyle='#191919';
+  ctx.beginPath(); ctx.arc(lx1,ly1,5,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(lx2,ly2,5,0,Math.PI*2); ctx.fill();
+  /* torso - green shirt */
+  ctx.strokeStyle='#16a34a'; ctx.lineWidth=15;
+  ctx.beginPath(); ctx.moveTo(fx,neckY+2); ctx.lineTo(fx,hipY); ctx.stroke();
+  /* arms - green sleeves + hands, flailing */
+  ctx.strokeStyle='#16a34a'; ctx.lineWidth=7;
+  ctx.beginPath();
+  ctx.moveTo(fx,neckY+5); ctx.lineTo(ax1,ay1);
+  ctx.moveTo(fx,neckY+5); ctx.lineTo(ax2,ay2);
+  ctx.stroke();
+  ctx.fillStyle='#f2c29b';
+  ctx.beginPath(); ctx.arc(ax1,ay1,4.2,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(ax2,ay2,4.2,0,Math.PI*2); ctx.fill();
   ctx.restore();
   drawFace(fx,fy,f.r,f.emoji,f.rot,f.vface);
   return hipY+24; // feet Y

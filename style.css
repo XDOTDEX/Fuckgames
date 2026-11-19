@@ -115,7 +115,7 @@
 #boardBtn{background:#ffe9a8;border-color:#e6c34a}
 #liveDot{text-align:center;font-size:12px;font-weight:700;color:#1a9e4b;margin:4px 0 0;animation:livePulse 1.6s infinite}
 @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.3}}
-.bava{width:30px;height:30px;border-radius:50%;flex:none;object-fit:cover;background:#e8e2d0}
+.bava{width:30px;height:30px;border-radius:50%;flex:none;object-fit:cover;background:#e8e2d0;animation:bavaPulse 1.6s ease-in-out infinite}@keyframes bavaPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(232,168,18,.45)}50%{transform:scale(1.12);box-shadow:0 0 0 6px rgba(232,168,18,0)}}.brow:nth-child(odd) .bava{animation-delay:.35s}.brow:nth-child(3n) .bava{animation-delay:.7s}
 .bavaL{display:flex;align-items:center;justify-content:center;font-weight:800;color:#7a6a3a;font-size:14px}
 .bprize{font-weight:800;color:#1a9e4b;font-size:14px;flex:none}
 .bprize.zero{color:#b3ab90;font-weight:600}
