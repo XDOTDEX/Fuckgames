@@ -22,7 +22,7 @@ jobs:
           data = json.load(urllib.request.urlopen(URL)) or {}
           rows = sorted(data.items(), key=lambda kv: kv[1].get("score", 0), reverse=True)[:10]
           medals = ["\U0001F947", "\U0001F948", "\U0001F949"]
-          lines = ["| # | Player | Score | Prize | Icon |", "|---|--------|-------|-------|------|"]
+          lines = ["<table>", '<tr><th>#</th><th width="44%">Player</th><th>Score</th><th>Prize</th><th>Icon</th></tr>']
           prizes = ["$50", "$30", "$20"]
           badgeurls = ["https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge1.svg", "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge2.svg", "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge3.svg"]
           bossurl = "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badgeboss.svg"
@@ -30,19 +30,21 @@ jobs:
               rank = medals[i] if i < 3 else str(i + 1)
               name = str(r.get("name", "Player")).replace("|", " ").strip() or "Player"
               photo = str(r.get("photo", "")).replace('"', "").replace("<", "").replace(">", "").strip()
+              name_html = name.replace(" ", "&nbsp;")
               if photo:
-                  cell = '<img src="%s" width="24" height="24" alt=""> %s' % (photo, name)
+                  cell = '<img src="%s" width="24" height="24" alt=""> %s' % (photo, name_html)
               else:
-                  cell = name
+                  cell = name_html
               prize = prizes[i] if i < 3 else "$0"
               icon = ""
               if i < 3:
                   icon += '<img src="%s" width="22" height="22" alt="">' % badgeurls[i]
               if k == "tg_5855933091":
                   icon += '<img src="%s" width="22" height="22" alt="">' % bossurl
-              lines.append("| %s | %s | %s | %s | %s |" % (rank, cell, r.get("score", 0), prize, icon if icon else "-"))
+              lines.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (rank, cell, r.get("score", 0), prize, icon if icon else "-"))
           if not rows:
-              lines.append("| - | No scores yet - be the first! | - | - | - |")
+              lines.append('<tr><td colspan="5">No scores yet - be the first!</td></tr>')
+          lines.append("</table>")
           dhaka = datetime.datetime.utcnow() + datetime.timedelta(hours=6)
           table = "\n".join(lines) + "\n\n_Last updated: %s (Dhaka time) - refreshes every ~5 minutes._" % dhaka.strftime("%d %b %Y, %H:%M")
           add = (6 - dhaka.weekday()) % 7
