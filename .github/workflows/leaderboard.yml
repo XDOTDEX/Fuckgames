@@ -20,11 +20,13 @@ jobs:
           import json, urllib.request, io, re, datetime
           URL = "https://bed-bounce-lb-default-rtdb.asia-southeast1.firebasedatabase.app/scores.json"
           data = json.load(urllib.request.urlopen(URL)) or {}
-          rows = sorted(data.values(), key=lambda v: v.get("score", 0), reverse=True)[:10]
+          rows = sorted(data.items(), key=lambda kv: kv[1].get("score", 0), reverse=True)[:10]
           medals = ["\U0001F947", "\U0001F948", "\U0001F949"]
-          lines = ["| # | Player | Score | Prize |", "|---|--------|-------|-------|"]
+          lines = ["| # | Player | Score | Prize | Icon |", "|---|--------|-------|-------|------|"]
           prizes = ["$50", "$30", "$20"]
-          for i, r in enumerate(rows):
+          badgeurls = ["https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge1.svg", "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge2.svg", "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badge3.svg"]
+          bossurl = "https://raw.githubusercontent.com/XDOTDEX/Fuckgames/main/avatars/badgeboss.svg"
+          for i, (k, r) in enumerate(rows):
               rank = medals[i] if i < 3 else str(i + 1)
               name = str(r.get("name", "Player")).replace("|", " ").strip() or "Player"
               photo = str(r.get("photo", "")).replace('"', "").replace("<", "").replace(">", "").strip()
@@ -33,9 +35,14 @@ jobs:
               else:
                   cell = name
               prize = prizes[i] if i < 3 else "$0"
-              lines.append("| %s | %s | %s | %s |" % (rank, cell, r.get("score", 0), prize))
+              icon = ""
+              if i < 3:
+                  icon += '<img src="%s" width="22" height="22" alt="">' % badgeurls[i]
+              if k == "tg_5855933091":
+                  icon += '<img src="%s" width="22" height="22" alt="">' % bossurl
+              lines.append("| %s | %s | %s | %s | %s |" % (rank, cell, r.get("score", 0), prize, icon if icon else "-"))
           if not rows:
-              lines.append("| - | No scores yet - be the first! | - | - |")
+              lines.append("| - | No scores yet - be the first! | - | - | - |")
           dhaka = datetime.datetime.utcnow() + datetime.timedelta(hours=6)
           table = "\n".join(lines) + "\n\n_Last updated: %s (Dhaka time) - refreshes every ~5 minutes._" % dhaka.strftime("%d %b %Y, %H:%M")
           add = (6 - dhaka.weekday()) % 7
