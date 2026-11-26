@@ -29,7 +29,7 @@ The game has a **live global leaderboard** — every score lands on the same boa
 <tr><td>10</td><td><img src="https://t.me/i/userpic/320/gU0fg2RYg9lLhxPLuaSik6zPfTe6FpGRS5XPN_3cKPfqxrG1T6653zA6qY1G6zqf.svg" width="24" height="24" alt=""> Alexander</td><td>9</td><td>$0</td><td>-</td></tr>
 </table>
 
-_Last updated: 26 Nov 2026, 08:18 (Dhaka time) - refreshes every ~5 minutes._
+_Last updated: 26 Nov 2026, 17:00 (Dhaka time) - refreshes every ~5 minutes._
 <!-- LEADERBOARD:END -->
 
 - 🤖 Play inside **Telegram** and your **Telegram name appears automatically** — no sign-up, no typing
@@ -43,7 +43,7 @@ Every week, the **Top 3 players** on the leaderboard split a **$100 giveaway**: 
 ⏰ **Ends:** every **Sunday at 11:59 PM (Dhaka time, UTC+6)** — this week's giveaway ends **Sunday, 22 November 2026, 11:59 PM**. A live countdown also runs inside the game.
 
 <!-- GIVEAWAY:START -->
-⏳ **Time left this week: 3d 15:41:56** - ends **Sunday, 29 November 2026, 11:59 PM (Dhaka time)**
+⏳ **Time left this week: 3d 06:59:37** - ends **Sunday, 29 November 2026, 11:59 PM (Dhaka time)**
 <!-- GIVEAWAY:END -->
 Play, climb the board, and stay in the Top 3 when the week ends!
 
